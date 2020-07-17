@@ -1,0 +1,28 @@
+# -*- encoding=utf8 -*-
+__author__ = "shenxixiang"
+
+from airtest.core.api import *
+auto_setup(__file__)
+
+from poco.drivers.android.uiautomation import AndroidUiautomationPoco
+poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=False)
+
+poco(text="雪球股票").click()
+sleep(5)
+poco(name="com.xueqiu.android:id/stock_name_one").click()
+sleep(1)
+poco.swipe([0.5, 0.8], [0.5, 0.2])
+sleep(5)
+poco(name="com.xueqiu.android:id/action_search").click()
+sleep(2)
+poco(name="com.xueqiu.android:id/search_input_text").set_text("SZ000858")
+sleep(2)
+poco(name='com.xueqiu.android:id/code').click()
+sleep(2)
+poco(name="com.xueqiu.android:id/stockCode",textMatches='SZ000858').click()
+sleep(2)
+poco.swipe([0.5, 0.8], [0.5, 0.2])
+poco(name="com.xueqiu.android:id/text",textMatches='财务').click()
+
+sleep(1)
+poco.swipe([0.5, 0.8], [0.5, 0.2])
